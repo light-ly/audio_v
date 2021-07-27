@@ -7,8 +7,6 @@ var width = canvas.width,
 
 var audio = new Audio("hello.mp4");
 
-audio.crossOrigin = 'anonymous';
-
 audio.oncanplaythrough = function () {
   if (screenWidth != width || screenHeight != height) {
     zoomPage();
@@ -20,7 +18,7 @@ audio.oncanplaythrough = function () {
     init();
     loader.style.display = "none";
     audio.play();
-    // fontCSSAnimation();
+    draw();
     document.removeEventListener("click", arguments.callee);
   });
 };
@@ -41,7 +39,7 @@ function zoomPage() {
       ");}",
     0
   );
-  // console.log("执行了zoom操作:", scaleX, scaleY);
+  console.log("执行了zoom操作:", scaleX, scaleY);
 }
 
 function init() {
@@ -67,4 +65,79 @@ function init() {
   gradient = p.createLinearGradient(0, 100, 1360, 100);
   gradient.addColorStop("0", "#f500d8");
   gradient.addColorStop("1.0", "#ceaf11");
+}
+
+function draw() {
+  requestAnimationFrame(draw);
+  analyser.getByteFrequencyData(dataArray);
+  p.clearRect(0, 0, width, height);
+  //左
+
+  //左填充
+  p.beginPath();
+  p.moveTo(0, height - 200);
+  var x = 0;
+  for (var i = 1; i < 42; i++) {
+    var lineHeight = ((dataArray[i] / 256) * height) / 3;
+    if (i < 5) {
+      p.lineTo(x, height - ((dataArray[i] / 256) * height) / 2 - 200);
+    } else if (i > 40) {
+      p.lineTo(x - 13, height - 200);
+    } else {
+      p.lineTo(x, height - lineHeight - 200);
+    }
+    x += 12;
+  }
+  p.fillStyle = gradient;
+  p.fill();
+  p.closePath();
+
+  //左线条
+  p.beginPath();
+  p.moveTo(0, height - 200);
+  var x = 0;
+  for (var i = 1; i < 42; i++) {
+    var lineHeight = ((dataArray[i] / 256) * height) / 3;
+    if (i < 5) {
+      p.lineTo(
+        x,
+        height -
+          ((dataArray[i] / 256) * height) / 2 -
+          210 -
+          Math.floor(Math.random() * 30)
+      );
+    } else if (i > 40) {
+      p.lineTo(x - 13, height - 220);
+    } else {
+      p.lineTo(x, height - lineHeight - 210 - Math.floor(Math.random() * 30));
+    }
+    x += 12;
+  }
+  p.strokeStyle = gradient;
+  p.stroke();
+  p.closePath();
+
+  //清除左侧底部部分频谱
+  p.fillStyle = "#fff";
+  p.fillRect(0, height - 300, 470, 101);
+
+  //左倒影
+  p.beginPath();
+  p.moveTo(0, height - 299);
+  var x = 0;
+  for (var i = 1; i < 41; i++) {
+    var lineHeight = ((dataArray[i] / 256) * height) / 50;
+    if (i < 5) {
+      p.lineTo(x, ((dataArray[i] / 256) * height) / 24 + 380);
+    } else p.lineTo(x, lineHeight + 380);
+    x += 12;
+  }
+  p.lineTo(x - 12, height - 299);
+  p.fillStyle = "#21dd13";
+
+  p.shadowBlur = 20;
+  p.shadowColor = "#21dd13";
+  p.fill();
+  p.closePath();
+  p.shadowBlur = 0;
 }

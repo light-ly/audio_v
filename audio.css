@@ -20,9 +20,11 @@ html {
 body {
   height: 600px;
   width: 1366px;
+  margin: auto;
 }
 
-/* .slide */
+
+/* .slide 
 .slide {
   width: 80px;
   height: 26px;
@@ -73,7 +75,7 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked + label {
   left: 43px;
 }
-/* end .slide */
+ end .slide */
 
 /* begin #loader */
 #loader {
