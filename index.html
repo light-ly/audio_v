@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta charset="utf-8">
 <html>
   <head>
     <title>Audio_v</title>
@@ -6,10 +7,11 @@
   </head>
 
   <body>
-    <!-- .slide <div class="slide"><input type="checkbox" value="None" id="slide" name="check" checked /><label for="slide"></label></div>-->
-    <div id="loader">loading...</div>
-    <input type="file" id="file" onchange="onInputFileChange()"/>
-
+    <div id="loader"></div>
+    <div>
+    <a href="javascript:;" class="file" id="a_file">播放本地文件<input type="file" id="file" onchange="onInputFileChange()"></a>
+    <a href="javascript:;" class="file" id="a_stream">播放麦克风<input type="button" id="stream" value="播放麦克风" onclick="onMediaStream()"/></a>
+    </div>
     <canvas
       id="canvas"
       width="1366"
