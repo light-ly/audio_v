@@ -5,7 +5,7 @@ var screenHeight = document.documentElement.clientHeight,
 var width = canvas.width,
   height = canvas.height;
 
-var audio = new Audio("dream.mp4");
+var audio = new Audio("dream.mp3");
 
 audio.oncanplaythrough = function () {
   if (screenWidth != width || screenHeight != height) {
