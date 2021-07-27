@@ -90,6 +90,7 @@ function draw() {
     }
     x += 12;
   }
+  p.lineTo(x, height - 299);
   p.fillStyle = gradient;
   p.fill();
   p.closePath();
@@ -115,6 +116,7 @@ function draw() {
     }
     x += 12;
   }
+  p.lineTo(x, height - 299);
   p.strokeStyle = gradient;
   p.stroke();
   p.closePath();
@@ -134,7 +136,7 @@ function draw() {
     } else p.lineTo(x, lineHeight + 380);
     x += 12;
   }
-  p.lineTo(x - 12, height - 299);
+  p.lineTo(x, height - 299);
   p.fillStyle = "#21dd13";
 
   p.shadowBlur = 20;
