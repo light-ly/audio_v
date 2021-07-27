@@ -62,9 +62,12 @@ function init() {
   // creat data
   dataArray = new Uint8Array(length);
 
+  // linear gradientcolor
   gradient = p.createLinearGradient(0, 100, 1360, 100);
   gradient.addColorStop("0", "#f500d8");
-  gradient.addColorStop("1.0", "#ceaf11");
+  gradient.addColorStop("0.25", "#ceaf11");
+  gradient.addColorStop("0.5", "#0ee7f7");
+  gradient.addColorStop("1", "#2ce672");
 }
 
 function draw() {
@@ -77,7 +80,7 @@ function draw() {
   p.beginPath();
   p.moveTo(0, height - 200);
   var x = 0;
-  for (var i = 1; i < 42; i++) {
+  for (var i = 1; i < 114; i++) {
     var lineHeight = ((dataArray[i] / 256) * height) / 3;
     if (i < 5) {
       p.lineTo(x, height - ((dataArray[i] / 256) * height) / 2 - 200);
