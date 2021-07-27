@@ -81,7 +81,7 @@ function draw() {
   p.beginPath();
   p.moveTo(0, height - 200);
   var x = 0;
-  for (var i = 1; i < Math.trunc(width/12); i++) {
+  for (var i = 1; i < Math.trunc(width/6); i++) {
     var lineHeight = ((dataArray[i] / 256) * height) / 3;
     if (i < 5) {
       p.lineTo(x, height - ((dataArray[i] / 256) * height) / 2 - 200);
@@ -90,7 +90,7 @@ function draw() {
     } else {
       p.lineTo(x, height - lineHeight - 200);
     }
-    x += 12;
+    x += 6;
   }
   p.lineTo(width, height - 299);
   p.fillStyle = gradient;
@@ -101,7 +101,7 @@ function draw() {
   p.beginPath();
   p.moveTo(0, height - 200);
   var x = 0;
-  for (var i = 1; i < Math.trunc(width/12); i++) {
+  for (var i = 1; i < Math.trunc(width/6); i++) {
     var lineHeight = ((dataArray[i] / 256) * height) / 3;
     if (i < 5) {
       p.lineTo(
@@ -116,7 +116,7 @@ function draw() {
     } else {
       p.lineTo(x, height - lineHeight - 210 - Math.floor(Math.random() * 30));
     }
-    x += 12;
+    x += 6;
   }
   p.lineTo(width, height - 299);
   p.strokeStyle = gradient;
@@ -131,12 +131,12 @@ function draw() {
   p.beginPath();
   p.moveTo(0, height - 299);
   var x = 0;
-  for (var i = 1; i < Math.trunc(width/12); i++) {
+  for (var i = 1; i < Math.trunc(width/6); i++) {
     var lineHeight = ((dataArray[i] / 256) * height) / 50;
     if (i < 5) {
       p.lineTo(x, ((dataArray[i] / 256) * height) / 24 + 380);
     } else p.lineTo(x, lineHeight + 380);
-    x += 12;
+    x += 6;
   }
   p.lineTo(width, height - 299);
   p.fillStyle = "#21dd13";
