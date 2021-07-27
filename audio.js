@@ -83,9 +83,9 @@ function draw() {
     var lineHeight = ((dataArray[i] / 256) * height) / 3;
     if (i < 5) {
       p.lineTo(x, height - ((dataArray[i] / 256) * height) / 2 - 200);
-    } /* else if (i > 110) {
+    } else if (i > 110) {
       p.lineTo(x - 13, height - 200);
-    } */ else {
+    } else {
       p.lineTo(x, height - lineHeight - 200);
     }
     x += 12;
@@ -108,9 +108,9 @@ function draw() {
           210 -
           Math.floor(Math.random() * 30)
       );
-    } /*else if (i > 110) {
+    } else if (i > 110) {
       p.lineTo(x - 13, height - 220);
-    } */ else {
+    } else {
       p.lineTo(x, height - lineHeight - 210 - Math.floor(Math.random() * 30));
     }
     x += 12;
