@@ -1,6 +1,6 @@
 // load screen
-var screenHeight = document.body.clientHeight,
-  screenWidth = document.body.clientWidth;
+var screenHeight = document.documentElement.clientHeight,
+  screenWidth = document.documentElement.clientWidth;
 // init canvas
 var width = canvas.width,
   height = canvas.height;
@@ -10,10 +10,9 @@ var audio = new Audio("hello.mp4");
 audio.oncanplaythrough = function () {
   if (screenWidth != width || screenHeight != height) {
     zoomPage();
-    loader.innerHTML =
-      '<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1105" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><defs><style type="text/css"></style></defs><path d="M900.571429 529.700571L141.714286 951.405714c-17.700571 9.728-32 1.133714-32-18.870857v-841.142857c0-20.004571 14.299429-28.562286 32-18.870857l758.857143 421.705143c17.700571 9.728 17.700571 25.709714 0 35.437714z" fill="#2c2c2c" p-id="1106"></path></svg>';
   }
-
+  loader.innerHTML =
+    '<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1105" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><defs><style type="text/css"></style></defs><path d="M900.571429 529.700571L141.714286 951.405714c-17.700571 9.728-32 1.133714-32-18.870857v-841.142857c0-20.004571 14.299429-28.562286 32-18.870857l758.857143 421.705143c17.700571 9.728 17.700571 25.709714 0 35.437714z" fill="#2c2c2c" p-id="1106"></path></svg>';
   document.addEventListener("click", function () {
     init();
     loader.style.display = "none";
@@ -84,7 +83,7 @@ function draw() {
     var lineHeight = ((dataArray[i] / 256) * height) / 3;
     if (i < 10) {
       p.lineTo(x, height - ((dataArray[i] / 256) * height) / 2 - 200);
-    } else if (i > 100) {
+    } else if (i > 110) {
       p.lineTo(x - 13, height - 200);
     } else {
       p.lineTo(x, height - lineHeight - 200);
@@ -109,7 +108,7 @@ function draw() {
           210 -
           Math.floor(Math.random() * 30)
       );
-    } else if (i > 100) {
+    } else if (i > 110) {
       p.lineTo(x - 13, height - 220);
     } else {
       p.lineTo(x, height - lineHeight - 210 - Math.floor(Math.random() * 30));
@@ -120,9 +119,9 @@ function draw() {
   p.stroke();
   p.closePath();
 
-  //清除左侧底部部分频谱
+  //清除底部部分频谱
   p.fillStyle = "#fff";
-  p.fillRect(0, height - 300, 470, 101);
+  p.fillRect(0, height - 300, 1366, 101);
 
   //左倒影
   p.beginPath();
