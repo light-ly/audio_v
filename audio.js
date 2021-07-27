@@ -6,7 +6,7 @@ var width = canvas.width,
   height = canvas.height;
 
 var audio = new Audio();
-audio.src = 'dream.mp3';
+audio.src = 'dream1.mp3';
 audio.preload = 'auto';
 
 audio.oncanplaythrough = function () {
