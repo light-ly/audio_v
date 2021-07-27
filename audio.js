@@ -99,7 +99,7 @@ function draw() {
   p.beginPath();
   p.moveTo(0, height - 200);
   var x = 0;
-  for (var i = 1; i < 42; i++) {
+  for (var i = 1; i < 144; i++) {
     var lineHeight = ((dataArray[i] / 256) * height) / 3;
     if (i < 5) {
       p.lineTo(
