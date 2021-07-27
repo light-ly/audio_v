@@ -82,9 +82,9 @@ function draw() {
   var x = 0;
   for (var i = 1; i < 114; i++) {
     var lineHeight = ((dataArray[i] / 256) * height) / 3;
-    if (i < 5) {
+    if (i < 10) {
       p.lineTo(x, height - ((dataArray[i] / 256) * height) / 2 - 200);
-    } else if (i > 40) {
+    } else if (i > 100) {
       p.lineTo(x - 13, height - 200);
     } else {
       p.lineTo(x, height - lineHeight - 200);
@@ -99,9 +99,9 @@ function draw() {
   p.beginPath();
   p.moveTo(0, height - 200);
   var x = 0;
-  for (var i = 1; i < 144; i++) {
+  for (var i = 1; i < 114; i++) {
     var lineHeight = ((dataArray[i] / 256) * height) / 3;
-    if (i < 5) {
+    if (i < 10) {
       p.lineTo(
         x,
         height -
@@ -109,7 +109,7 @@ function draw() {
           210 -
           Math.floor(Math.random() * 30)
       );
-    } else if (i > 40) {
+    } else if (i > 100) {
       p.lineTo(x - 13, height - 220);
     } else {
       p.lineTo(x, height - lineHeight - 210 - Math.floor(Math.random() * 30));
@@ -128,9 +128,9 @@ function draw() {
   p.beginPath();
   p.moveTo(0, height - 299);
   var x = 0;
-  for (var i = 1; i < 41; i++) {
+  for (var i = 1; i < 114; i++) {
     var lineHeight = ((dataArray[i] / 256) * height) / 50;
-    if (i < 5) {
+    if (i < 10) {
       p.lineTo(x, ((dataArray[i] / 256) * height) / 24 + 380);
     } else p.lineTo(x, lineHeight + 380);
     x += 12;
