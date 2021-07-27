@@ -92,7 +92,7 @@ function draw() {
     }
     x += 6;
   }
-  p.lineTo(width, height - 299);
+  p.lineTo(width+6, height - 299);
   p.fillStyle = gradient;
   p.fill();
   p.closePath();
@@ -118,7 +118,7 @@ function draw() {
     }
     x += 6;
   }
-  p.lineTo(width, height - 299);
+  p.lineTo(width+6, height - 299);
   p.strokeStyle = gradient;
   p.stroke();
   p.closePath();
