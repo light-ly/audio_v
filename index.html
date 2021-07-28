@@ -2,17 +2,45 @@
 <meta charset="utf-8">
 <html>
   <head>
-    <title>Audio_v</title>
+    <title>流光</title>
     <link rel="stylesheet" href="./audio.css" />
   </head>
+  <style>
+    body{
+      background:  linear-gradient(to right,pink,cornflowerblue);
+    }
+    .text{
+      margin: 150px 450px 150px;
+      height:  400px;
+      padding: 50px 0px;
+      font-family: "Times New Roman";
+    }
+    #a_file {
+      background: cornflowerblue;
+      margin: 50px 180px;
+      padding:35px 50px;
+      position:absolute;
+      font-size: 25px;
+      font-family: "Times New Roman";
+      border-radius:50px;
+    }
+    #a_stream {
+      background:cornflowerblue;
+      margin: 200px 220px ;
+      padding:20px 50px;
+      position:absolute;
+      font-size: 25px;
+      border-radius:50px;
+    }
+  </style>
 
   <body>
   <div id="loader"></div>
-  <div>
-    <a href="javascript:;" class="file" id="a_file">播放本地文件<input type="file" id="file" onchange="onInputFileChange()"></a>
-    <a href="javascript:;" class="file" id="a_stream" onclick="onMediaStream()">播放麦克风</a>
-    <a href="javascript:;" class="bf" onclick="pause()">播放/暂停</a>
-    <a href="javascript:;" class="bf" onclick="reload()">重新播放</a>
+  <div class="text">
+    <a href="#" class="file" id="a_file">播放本地文件<input type="file" id="file" onchange="onInputFileChange()"></a>
+    <a href="#" class="file" id="a_stream" onclick="onMediaStream()">播放麦克风</a>
+    <a href="#" class="bf" onclick="pause()">播放/暂停</a>
+    <a href="#" class="bf" onclick="reload()">重新播放</a>
   </div>
   <canvas
     id="canvas"
