@@ -121,8 +121,10 @@ function init() {
         source = context.createMediaElementSource(audio);
         for (var i = 0; i < f.length; i++)
             f.item(i).setAttribute("style", "display: ");
-    } else if (flag == 1)
+    } else if (flag == 1){
+        button4.style.display = "";
         source = context.createMediaStreamSource(audio);
+    }
     analyser = context.createAnalyser();
     // connect：source → analyser → destination
     source.connect(analyser);
