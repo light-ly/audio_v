@@ -7,9 +7,31 @@ var width = canvas.width,
 // 0:本地文件   1:麦克风
 var flag = 0
 
+
 var audio = new Audio();
 audio.src = '';
 audio.preload = 'auto';
+
+//隐藏按钮
+var f = document.getElementsByClassName("bf");
+for (var i = 0; i < f.length; i++)
+    f.item(i).setAttribute("style", "display: none");
+
+function reload() {
+    audio.currentTime = 0;
+}
+
+function pause() {
+    if (audio !== null) {
+        //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+        alert(audio.paused);
+        if (audio.paused) {
+            audio.play();//audio.play();// 这个就是播放
+        } else {
+            audio.pause();// 这个就是暂停
+        }
+    }
+}
 
 function onMediaStream() {
     if (navigator.mediaDevices) {
@@ -70,19 +92,23 @@ function init() {
     loader.style.display = "none";
     a_file.style.display = "none";
     a_stream.style.display = "none";
+
     // loadmedia
     AudioContext = AudioContext || webkitAudioContext;
     context = new AudioContext();
 
     // creat AnalyserNode
-    if (flag == 0)
+    if (flag == 0) {
         source = context.createMediaElementSource(audio);
-    else if (flag == 1)
+        for (var i = 0; i < f.length; i++)
+            f.item(i).setAttribute("style", "display: ");
+    } else if (flag == 1)
         source = context.createMediaStreamSource(audio);
     analyser = context.createAnalyser();
     // connect：source → analyser → destination
     source.connect(analyser);
-    analyser.connect(context.destination);
+    if (flag == 0)
+        analyser.connect(context.destination);
 
     p = canvas.getContext("2d");
     // penBg = bg.getContext("2d");

@@ -7,17 +7,19 @@
   </head>
 
   <body>
-    <div id="loader"></div>
-    <div>
+  <div id="loader"></div>
+  <div>
     <a href="javascript:;" class="file" id="a_file">播放本地文件<input type="file" id="file" onchange="onInputFileChange()"></a>
-    <a href="javascript:;" class="file" id="a_stream">播放麦克风<input type="button" id="stream" value="播放麦克风" onclick="onMediaStream()"/></a>
-    </div>
-    <canvas
-      id="canvas"
-      width="1366"
-      height="680"
-      style="position: absolute"
-    ></canvas>
+    <a href="javascript:;" class="file" id="a_stream" onclick="onMediaStream()">播放麦克风</a>
+    <a href="javascript:;" class="bf" onclick="pause()">播放/暂停</a>
+    <a href="javascript:;" class="bf" onclick="reload()">重新播放</a>
+  </div>
+  <canvas
+    id="canvas"
+    width="1366"
+    height="680"
+    style="position: absolute"
+  ></canvas>
   </body>
   <script type="text/javascript" src="./audio.js"></script>
 </html>
