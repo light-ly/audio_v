@@ -9,7 +9,7 @@
     body{
       background:  linear-gradient(to right,pink,cornflowerblue);
     }
-    .text{
+    .text1{
       margin: 150px 450px 150px;
       height:  400px;
       padding: 50px 0px;
@@ -17,7 +17,7 @@
     }
     #a_file {
       background: cornflowerblue;
-      margin: 50px 180px;
+      margin: 50px 200px;
       padding:35px 50px;
       position:absolute;
       font-size: 25px;
@@ -32,15 +32,42 @@
       font-size: 25px;
       border-radius:50px;
     }
+    .text2{
+      margin: 50px 450px 50px;
+      height:  100px;
+      padding: 50px 300px;
+      font-family: "Times New Roman";
+    }
+    #button1{
+      background: cornflowerblue;
+      margin: 20px -200px;
+      padding:20px 50px;
+      position:absolute;
+      font-size: 25px;
+      font-family: "Times New Roman";
+      border-radius:50px;
+    }
+    #button2{
+      background:cornflowerblue;
+      margin: 20px 20px ;
+      padding:20px 50px;
+      position:absolute;
+      font-size: 25px;
+      border-radius:50px;
+    }
   </style>
 
   <body>
   <div id="loader"></div>
-  <div class="text">
+  <div class="text1" id="div1">
     <a href="#" class="file" id="a_file">播放本地文件<input type="file" id="file" onchange="onInputFileChange()"></a>
     <a href="#" class="file" id="a_stream" onclick="onMediaStream()">播放麦克风</a>
-    <a href="#" class="bf" onclick="pause()">播放/暂停</a>
-    <a href="#" class="bf" onclick="reload()">重新播放</a>
+  </div>
+  <div class="text2">
+    <a href="#" class="bf" id="button1" onclick="pause()">播放/暂停</a>
+    <a href="#" class="bf" id="button2" onclick="reload()">重新播放</a>
+    <a href="#" class="bf" id="button3">切歌<input type="file" id="file2" onchange="reloadFile()"></a>
+    <a href="#" class="bf" id="button4" onclick="thisReload()">退出</a>
   </div>
   <canvas
     id="canvas"

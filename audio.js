@@ -6,6 +6,8 @@ var width = canvas.width,
     height = canvas.height;
 // 0:本地文件   1:麦克风
 var flag = 0
+// 1:第一次加载 0:非第一次加载
+var isInit = 1;
 
 
 var audio = new Audio();
@@ -16,6 +18,17 @@ audio.preload = 'auto';
 var f = document.getElementsByClassName("bf");
 for (var i = 0; i < f.length; i++)
     f.item(i).setAttribute("style", "display: none");
+
+
+function thisReload(){
+    window.location.reload();
+}
+
+function reloadFile() {
+    isInit = 0;
+    audio.pause();
+    onInputFileChange();
+}
 
 function reload() {
     audio.currentTime = 0;
@@ -51,12 +64,17 @@ function onMediaStream() {
 }
 
 function onInputFileChange() {
-    let file = document.getElementById('file').files[0];
-    let url = URL.createObjectURL(file);
+    if (isInit == 1)
+        files = document.getElementById('file');
+    else
+        files = document.getElementById('file2');
+
+    url = URL.createObjectURL(files.files[0]);
     console.log(url);
     audio.src = url;
 
-    init();
+    if (isInit == 1)
+        init();
     audio.play();
     draw();
 }
@@ -92,6 +110,7 @@ function init() {
     loader.style.display = "none";
     a_file.style.display = "none";
     a_stream.style.display = "none";
+    div1.style.display = "none";
 
     // loadmedia
     AudioContext = AudioContext || webkitAudioContext;
