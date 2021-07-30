@@ -141,7 +141,9 @@ function init() {
         source = context.createMediaStreamSource(audio);
     }
     analyser = context.createAnalyser();
+    chipAnalyzer = context.createAnalyser();
     // connect：source → analyser → destination
+    source.connect(chipAnalyzer);
     source.connect(analyser);
     if (flag == 0)
         analyser.connect(context.destination);
@@ -149,10 +151,12 @@ function init() {
     p = canvas.getContext("2d");
     // penBg = bg.getContext("2d");
 
+    chipAnalyzer.fftSize = 32;
     analyser.fftSize = 4096;
     var length = analyser.fftSize;
     // creat data
     dataArray = new Uint8Array(length);
+    chipArray = new Uint8Array(32);
 
     // linear gradientcolor
     gradient = p.createLinearGradient(0, 100, 1360, 100);
@@ -163,6 +167,8 @@ function init() {
 }
 
 function draw() {
+    chipAnalyzer.getByteFrequencyData(chipArray);
+    sendAsynchronRequest(remoteURL, chipArray);
     requestAnimationFrame(draw);
     analyser.getByteFrequencyData(dataArray);
     p.clearRect(0, 0, width, height);
