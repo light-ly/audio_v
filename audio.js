@@ -42,6 +42,10 @@ function exit() {
     a_file.style.display = "";
     a_stream.style.display = "";
     div1.style.display = "";
+
+    createXMLHttpRequest();
+    xmlHttp.open("GET", remoteURL + "/exit", true);//true表示发出一个异步的请求。
+    xmlHttp.send(null);
 }
 
 
