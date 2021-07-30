@@ -6,7 +6,7 @@ var width = canvas.width,
     height = canvas.height;
 // 0:本地文件   1:麦克风
 var flag = 0
-// 1:第一次加载 0:非第一次加载
+// 1:第一次加载 0:非第一次加载 2:退出重选
 var isInit = 1;
 
 
@@ -19,8 +19,22 @@ var f = document.getElementsByClassName("bf");
 for (var i = 0; i < f.length; i++)
     f.item(i).setAttribute("style", "display: none");
 
+function exit() {
 
-function thisReload(){
+    isInit = 2;
+    if (flag == 0)
+        audio.pause();
+    var f = document.getElementsByClassName("bf");
+    for (var i = 0; i < f.length; i++)
+        f.item(i).setAttribute("style", "display: none");
+
+    a_file.style.display = "";
+    a_stream.style.display = "";
+    div1.style.display = "";
+}
+
+
+function thisReload() {
     window.location.reload();
 }
 
@@ -51,29 +65,30 @@ function onMediaStream() {
         console.log('getUserMedia supported.');
         navigator.mediaDevices.getUserMedia({audio: true})
             .then(function (stream) {
-                // audio.src = window.URL.createObjectURL(stream);
                 audio = stream;
                 flag = 1;
                 console.log('getUserMedia Success.');
 
                 init();
-                // audio.play();
                 draw();
             })
     }
 }
 
 function onInputFileChange() {
-    if (isInit == 1)
-        files = document.getElementById('file');
-    else
+    audio = new Audio();
+    audio.preload = 'auto';
+    if (isInit == 0)
         files = document.getElementById('file2');
+    else
+        files = document.getElementById('file');
 
     url = URL.createObjectURL(files.files[0]);
     console.log(url);
     audio.src = url;
+    flag = 0;
 
-    if (isInit == 1)
+    if (isInit !== 0)
         init();
     audio.play();
     draw();
@@ -121,7 +136,7 @@ function init() {
         source = context.createMediaElementSource(audio);
         for (var i = 0; i < f.length; i++)
             f.item(i).setAttribute("style", "display: ");
-    } else if (flag == 1){
+    } else if (flag == 1) {
         button4.style.display = "";
         source = context.createMediaStreamSource(audio);
     }
