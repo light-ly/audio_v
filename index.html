@@ -72,21 +72,33 @@
       font-size: 25px;
       border-radius:50px;
     }
-    #button5{
+
+    #button5 {
       background:cornflowerblue;
-      margin: 100px -250px ;
+      margin: 320px 220px ;
       padding:20px 50px;
       position:absolute;
       font-size: 25px;
       border-radius:50px;
     }
-    #button6{
-      background:cornflowerblue;
-      margin: 100px 0px ;
-      padding:20px 50px;
+
+    #button6 {
+      background: cornflowerblue;
+      margin: 440px 200px;
+      padding:35px 50px;
       position:absolute;
       font-size: 25px;
+      font-family: "Times New Roman";
       border-radius:50px;
+    }
+    #button7 {
+        background: cornflowerblue;
+        margin: 560px 200px;
+        padding:35px 50px;
+        position:absolute;
+        font-size: 25px;
+        font-family: "Times New Roman";
+        border-radius:50px;
     }
   </style>
 
@@ -95,14 +107,15 @@
   <div class="text1" id="div1">
     <a href="#" class="file" id="a_file">播放本地文件<input type="file" id="file" onchange="onInputFileChange()"></a>
     <a href="#" class="file" id="a_stream" onclick="onMediaStream()">播放麦克风</a>
+    <a href="#" class="file" id="button5" onclick="board()">开/关边框</a>
+    <a href="#" class="file" id="button6" onclick="blink()">切换闪烁</a>
+    <a href="#" class="file" id="button7" onclick="time()">时钟/频谱</a>
   </div>
   <div class="text2">
     <a href="#" class="bf" id="button1" onclick="pause()">播放/暂停</a>
     <a href="#" class="bf" id="button2" onclick="reload()">重新播放</a>
     <a href="#" class="bf" id="button3">切歌<input type="file" id="file2" onchange="reloadFile()"></a>
     <a href="#" class="bf" id="button4" onclick="exit()">退出</a>
-    <a href="#" class="bf" id="button5" onclick="board()">开/关边框</a>
-    <a href="#" class="bf" id="button6" onclick="blink()">切换闪烁</a>
   </div>
   <canvas
     id="canvas"
@@ -112,5 +125,4 @@
   ></canvas>
   </body>
   <script type="text/javascript" src="./audio.js"></script>
-  <script type="text/javascript" src="./xhr.js"></script>
 </html>

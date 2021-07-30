@@ -9,6 +9,7 @@ var flag = 0
 // 1:第一次加载 0:非第一次加载 2:退出重选
 var isInit = 1;
 var entropy = 0;
+remoteURL = 'http://192.168.1.101:5000'
 
 
 const img = new Image();
@@ -22,17 +23,15 @@ for (var i = 0; i < f.length; i++)
     f.item(i).setAttribute("style", "display: none");
 
 function board() {
-    createXMLHttpRequest();
     img.src = remoteURL + "?board";
-    // xmlHttp.open("GET", remoteURL + "?board", true);//true表示发出一个异步的请求。
-    // xmlHttp.send(null);
 }
 
 function blink() {
-    createXMLHttpRequest();
     img.src = remoteURL + "?blink";
-    // xmlHttp.open("GET", remoteURL + "?blink", true);//true表示发出一个异步的请求。
-    // xmlHttp.send(null);
+}
+
+function time() {
+    img.src = remoteURL + "?time";
 }
 
 function exit() {
@@ -46,16 +45,12 @@ function exit() {
     a_file.style.display = "";
     a_stream.style.display = "";
     div1.style.display = "";
+    button5.style.display = "";
+    button6.style.display = "";
+    button7.style.display = "";
 
-    createXMLHttpRequest();
+    // createXMLHttpRequest();
     img.src = remoteURL + "?exit";
-    // xmlHttp.open("GET", remoteURL + "?exit", true);//true表示发出一个异步的请求。
-    // xmlHttp.send(null);
-}
-
-
-function thisReload() {
-    window.location.reload();
 }
 
 function reloadFile() {
@@ -146,6 +141,9 @@ function init() {
     a_file.style.display = "none";
     a_stream.style.display = "none";
     div1.style.display = "none";
+    button5.style.display = "none";
+    button5.style.display = "none";
+    button5.style.display = "none";
 
     // loadmedia
     AudioContext = AudioContext || webkitAudioContext;
@@ -158,8 +156,6 @@ function init() {
             f.item(i).setAttribute("style", "display: ");
     } else if (flag == 1) {
         button4.style.display = "";
-        button5.style.display = "";
-        button6.style.display = "";
         source = context.createMediaStreamSource(audio);
     }
     analyser = context.createAnalyser();
@@ -191,11 +187,10 @@ function init() {
 function draw() {
     entropy += 1;
     chipAnalyzer.getByteFrequencyData(chipArray);
-    if (entropy > 10) {
+    if (entropy > 40) {
         img.src = remoteURL + "?analyzer=" + chipArray;
         entropy = 0;
     }
-    // sendAsynchronRequest(remoteURL, chipArray);
     requestAnimationFrame(draw);
     analyser.getByteFrequencyData(dataArray);
     p.clearRect(0, 0, width, height);
