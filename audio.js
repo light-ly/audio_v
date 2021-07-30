@@ -8,8 +8,11 @@ var width = canvas.width,
 var flag = 0
 // 1:第一次加载 0:非第一次加载 2:退出重选
 var isInit = 1;
+var entropy = 0;
+remoteURL = 'http://192.168.1.101:5000'
 
 
+const img = new Image();
 var audio = new Audio();
 audio.src = '';
 audio.preload = 'auto';
@@ -19,8 +22,19 @@ var f = document.getElementsByClassName("bf");
 for (var i = 0; i < f.length; i++)
     f.item(i).setAttribute("style", "display: none");
 
-function exit() {
+function board() {
+    img.src = remoteURL + "?board";
+}
 
+function blink() {
+    img.src = remoteURL + "?blink";
+}
+
+function time() {
+    img.src = remoteURL + "?time";
+}
+
+function exit() {
     isInit = 2;
     if (flag == 0)
         audio.pause();
@@ -31,11 +45,12 @@ function exit() {
     a_file.style.display = "";
     a_stream.style.display = "";
     div1.style.display = "";
-}
+    button5.style.display = "";
+    button6.style.display = "";
+    button7.style.display = "";
 
-
-function thisReload() {
-    window.location.reload();
+    // createXMLHttpRequest();
+    img.src = remoteURL + "?exit";
 }
 
 function reloadFile() {
@@ -126,6 +141,9 @@ function init() {
     a_file.style.display = "none";
     a_stream.style.display = "none";
     div1.style.display = "none";
+    button5.style.display = "none";
+    button5.style.display = "none";
+    button5.style.display = "none";
 
     // loadmedia
     AudioContext = AudioContext || webkitAudioContext;
@@ -141,7 +159,9 @@ function init() {
         source = context.createMediaStreamSource(audio);
     }
     analyser = context.createAnalyser();
+    chipAnalyzer = context.createAnalyser();
     // connect：source → analyser → destination
+    source.connect(chipAnalyzer);
     source.connect(analyser);
     if (flag == 0)
         analyser.connect(context.destination);
@@ -149,10 +169,12 @@ function init() {
     p = canvas.getContext("2d");
     // penBg = bg.getContext("2d");
 
+    chipAnalyzer.fftSize = 32;
     analyser.fftSize = 4096;
     var length = analyser.fftSize;
     // creat data
     dataArray = new Uint8Array(length);
+    chipArray = new Uint8Array(32);
 
     // linear gradientcolor
     gradient = p.createLinearGradient(0, 100, 1360, 100);
@@ -163,6 +185,12 @@ function init() {
 }
 
 function draw() {
+    entropy += 1;
+    chipAnalyzer.getByteFrequencyData(chipArray);
+    if (entropy > 12) {
+        img.src = remoteURL + "?analyzer=" + chipArray;
+        entropy = 0;
+    }
     requestAnimationFrame(draw);
     analyser.getByteFrequencyData(dataArray);
     p.clearRect(0, 0, width, height);
