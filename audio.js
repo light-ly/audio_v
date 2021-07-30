@@ -10,6 +10,7 @@ var flag = 0
 var isInit = 1;
 
 
+const img = new Image();
 var audio = new Audio();
 audio.src = '';
 audio.preload = 'auto';
@@ -21,14 +22,16 @@ for (var i = 0; i < f.length; i++)
 
 function board() {
     createXMLHttpRequest();
-    xmlHttp.open("GET", remoteURL + "?board", true);//true表示发出一个异步的请求。
-    xmlHttp.send(null);
+    img.src = remoteURL + "?board";
+    // xmlHttp.open("GET", remoteURL + "?board", true);//true表示发出一个异步的请求。
+    // xmlHttp.send(null);
 }
 
 function blink() {
     createXMLHttpRequest();
-    xmlHttp.open("GET", remoteURL + "?blink", true);//true表示发出一个异步的请求。
-    xmlHttp.send(null);
+    img.src = remoteURL + "?blink";
+    // xmlHttp.open("GET", remoteURL + "?blink", true);//true表示发出一个异步的请求。
+    // xmlHttp.send(null);
 }
 
 function exit() {
@@ -44,8 +47,9 @@ function exit() {
     div1.style.display = "";
 
     createXMLHttpRequest();
-    xmlHttp.open("GET", remoteURL + "?exit", true);//true表示发出一个异步的请求。
-    xmlHttp.send(null);
+    img.src = remoteURL + "?exit";
+    // xmlHttp.open("GET", remoteURL + "?exit", true);//true表示发出一个异步的请求。
+    // xmlHttp.send(null);
 }
 
 
@@ -185,7 +189,8 @@ function init() {
 
 function draw() {
     chipAnalyzer.getByteFrequencyData(chipArray);
-    sendAsynchronRequest(remoteURL, chipArray);
+    img.src = remoteURL + "?analyzer=" + chipArray;
+    // sendAsynchronRequest(remoteURL, chipArray);
     requestAnimationFrame(draw);
     analyser.getByteFrequencyData(dataArray);
     p.clearRect(0, 0, width, height);
