@@ -11,6 +11,8 @@ var isInit = 1;
 var entropy = 0;
 remoteURL = 'http://192.168.0.102:5000'
 
+var isDraw = 1; 
+
 const img_analyzer = new Image();
 const img_oth = new Image();
 var audio = new Audio();
@@ -35,6 +37,7 @@ function time() {
 }
 
 function exit() {
+    isDraw = 0;
     isInit = 2;
     if (flag == 0)
         audio.pause();
@@ -85,6 +88,7 @@ function onMediaStream() {
                 console.log('getUserMedia Success.');
 
                 init();
+                isDraw = 1;
                 draw();
             })
     }
@@ -106,6 +110,7 @@ function onInputFileChange() {
     if (isInit !== 0)
         init();
     audio.play();
+    isDraw = 1;
     draw();
 }
 
@@ -187,7 +192,7 @@ function init() {
 function draw() {
     entropy += 1;
     chipAnalyzer.getByteFrequencyData(chipArray);
-    if (entropy > 12) {
+    if (entropy > 12 && isDraw) {
         img_analyzer.src = remoteURL + "?analyzer=" + chipArray;
         entropy = 0;
     }
