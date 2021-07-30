@@ -72,6 +72,22 @@
       font-size: 25px;
       border-radius:50px;
     }
+    #button5{
+      background:cornflowerblue;
+      margin: 100px -250px ;
+      padding:20px 50px;
+      position:absolute;
+      font-size: 25px;
+      border-radius:50px;
+    }
+    #button6{
+      background:cornflowerblue;
+      margin: 100px 0px ;
+      padding:20px 50px;
+      position:absolute;
+      font-size: 25px;
+      border-radius:50px;
+    }
   </style>
 
   <body>
@@ -84,8 +100,9 @@
     <a href="#" class="bf" id="button1" onclick="pause()">播放/暂停</a>
     <a href="#" class="bf" id="button2" onclick="reload()">重新播放</a>
     <a href="#" class="bf" id="button3">切歌<input type="file" id="file2" onchange="reloadFile()"></a>
-<!--    <a href="#" class="bf" id="button4" onclick="javascript:location.reload();">退出</a>-->
     <a href="#" class="bf" id="button4" onclick="exit()">退出</a>
+    <a href="#" class="bf" id="button5" onclick="board()">开/关边框</a>
+    <a href="#" class="bf" id="button6" onclick="blink()">切换闪烁</a>
   </div>
   <canvas
     id="canvas"

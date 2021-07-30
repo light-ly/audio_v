@@ -19,8 +19,19 @@ var f = document.getElementsByClassName("bf");
 for (var i = 0; i < f.length; i++)
     f.item(i).setAttribute("style", "display: none");
 
-function exit() {
+function board() {
+    createXMLHttpRequest();
+    xmlHttp.open("GET", remoteURL + "/board", true);//true表示发出一个异步的请求。
+    xmlHttp.send(null);
+}
 
+function blink() {
+    createXMLHttpRequest();
+    xmlHttp.open("GET", remoteURL + "/blink", true);//true表示发出一个异步的请求。
+    xmlHttp.send(null);
+}
+
+function exit() {
     isInit = 2;
     if (flag == 0)
         audio.pause();
@@ -138,6 +149,8 @@ function init() {
             f.item(i).setAttribute("style", "display: ");
     } else if (flag == 1) {
         button4.style.display = "";
+        button5.style.display = "";
+        button6.style.display = "";
         source = context.createMediaStreamSource(audio);
     }
     analyser = context.createAnalyser();

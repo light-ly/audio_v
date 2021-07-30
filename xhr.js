@@ -32,7 +32,7 @@ function sendAsynchronRequest(url, parameter) {
     // xmlHttp.onreadystatechange = callback;
     //设置对拂去其调用的参数（提交的方式，请求的的url，请求的类型（异步请求））
     xmlHttp.open("GET", url +"?analyzer=" +parameter, true);//true表示发出一个异步的请求。
-    xmlHttp.send(null);
+    // xmlHttp.send(null);
     // } else {
     // xmlHttp.onreadystatechange = callback;
     // xmlHttp.open("POST", url, true);
