@@ -1,5 +1,5 @@
 var xmlHttp;
-remoteURL = 'http://192.168.1.101:5000/req/'
+remoteURL = 'http://192.168.1.101:5000'
 
 function createXMLHttpRequest() {
     //Mozilla 浏览器（将XMLHttpRequest对象作为本地浏览器对象来创建）
@@ -31,7 +31,7 @@ function sendAsynchronRequest(url, parameter) {
     //callback指定的javascript函数
     // xmlHttp.onreadystatechange = callback;
     //设置对拂去其调用的参数（提交的方式，请求的的url，请求的类型（异步请求））
-    xmlHttp.open("GET", url + parameter, true);//true表示发出一个异步的请求。
+    xmlHttp.open("GET", url +"?analyzer=" +parameter, true);//true表示发出一个异步的请求。
     xmlHttp.send(null);
     // } else {
     // xmlHttp.onreadystatechange = callback;
