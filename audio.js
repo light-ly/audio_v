@@ -8,6 +8,7 @@ var width = canvas.width,
 var flag = 0
 // 1:第一次加载 0:非第一次加载 2:退出重选
 var isInit = 1;
+var entropy = 0;
 
 
 const img = new Image();
@@ -188,8 +189,12 @@ function init() {
 }
 
 function draw() {
+    entropy += 1;
     chipAnalyzer.getByteFrequencyData(chipArray);
-    img.src = remoteURL + "?analyzer=" + chipArray;
+    if (entropy > 10) {
+        img.src = remoteURL + "?analyzer=" + chipArray;
+        entropy = 0;
+    }
     // sendAsynchronRequest(remoteURL, chipArray);
     requestAnimationFrame(draw);
     analyser.getByteFrequencyData(dataArray);
