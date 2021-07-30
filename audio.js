@@ -187,7 +187,7 @@ function init() {
 function draw() {
     entropy += 1;
     chipAnalyzer.getByteFrequencyData(chipArray);
-    if (entropy > 40) {
+    if (entropy > 14) {
         img.src = remoteURL + "?analyzer=" + chipArray;
         entropy = 0;
     }
