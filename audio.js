@@ -11,8 +11,8 @@ var isInit = 1;
 var entropy = 0;
 remoteURL = 'http://192.168.0.102:5000'
 
-
-const img = new Image();
+const img_analyzer = new Image();
+const img_oth = new Image();
 var audio = new Audio();
 audio.src = '';
 audio.preload = 'auto';
@@ -23,15 +23,15 @@ for (var i = 0; i < f.length; i++)
     f.item(i).setAttribute("style", "display: none");
 
 function board() {
-    img.src = remoteURL + "?board";
+    img_oth.src = remoteURL + "?board";
 }
 
 function blink() {
-    img.src = remoteURL + "?blink";
+    img_oth.src = remoteURL + "?blink";
 }
 
 function time() {
-    img.src = remoteURL + "?time";
+    img_oth.src = remoteURL + "?time";
 }
 
 function exit() {
@@ -50,7 +50,7 @@ function exit() {
     button7.style.display = "";
 
     // createXMLHttpRequest();
-    img.src = remoteURL + "?exit";
+    img_analyzer.src = remoteURL + "?exit";
 }
 
 function reloadFile() {
