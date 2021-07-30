@@ -21,13 +21,13 @@ for (var i = 0; i < f.length; i++)
 
 function board() {
     createXMLHttpRequest();
-    xmlHttp.open("GET", remoteURL + "/board", true);//true表示发出一个异步的请求。
+    xmlHttp.open("GET", remoteURL + "?board", true);//true表示发出一个异步的请求。
     xmlHttp.send(null);
 }
 
 function blink() {
     createXMLHttpRequest();
-    xmlHttp.open("GET", remoteURL + "/blink", true);//true表示发出一个异步的请求。
+    xmlHttp.open("GET", remoteURL + "?blink", true);//true表示发出一个异步的请求。
     xmlHttp.send(null);
 }
 
@@ -44,7 +44,7 @@ function exit() {
     div1.style.display = "";
 
     createXMLHttpRequest();
-    xmlHttp.open("GET", remoteURL + "/exit", true);//true表示发出一个异步的请求。
+    xmlHttp.open("GET", remoteURL + "?exit", true);//true表示发出一个异步的请求。
     xmlHttp.send(null);
 }
 
