@@ -179,7 +179,7 @@ function init() {
     var length = analyser.fftSize;
     // creat data
     dataArray = new Uint8Array(length);
-    chipArray = new Uint8Array(32);
+    chipArray = new Uint8Array(64);
 
     // linear gradientcolor
     gradient = p.createLinearGradient(0, 100, 1360, 100);
