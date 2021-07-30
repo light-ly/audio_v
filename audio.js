@@ -174,7 +174,7 @@ function init() {
     p = canvas.getContext("2d");
     // penBg = bg.getContext("2d");
 
-    chipAnalyzer.fftSize = 32;
+    chipAnalyzer.fftSize = 64;
     analyser.fftSize = 4096;
     var length = analyser.fftSize;
     // creat data
