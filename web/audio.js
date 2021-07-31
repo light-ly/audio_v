@@ -174,12 +174,12 @@ function init() {
     p = canvas.getContext("2d");
     // penBg = bg.getContext("2d");
 
-    chipAnalyzer.fftSize = 32;
+    chipAnalyzer.fftSize = 64;
     analyser.fftSize = 4096;
     var length = analyser.fftSize;
     // creat data
     dataArray = new Uint8Array(length);
-    chipArray = new Uint8Array(32);
+    chipArray = new Uint8Array(64);
 
     // linear gradientcolor
     gradient = p.createLinearGradient(0, 100, 1360, 100);
@@ -192,7 +192,7 @@ function init() {
 function draw() {
     entropy += 1;
     chipAnalyzer.getByteFrequencyData(chipArray);
-    if (entropy > 120 && isDraw) {
+    if (entropy > 15 && isDraw) {
         img_analyzer.src = remoteURL + "?analyzer=" + chipArray;
         entropy = 0;
     }
