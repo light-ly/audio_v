@@ -9,7 +9,7 @@ var flag = 0
 // 1:第一次加载 0:非第一次加载 2:退出重选
 var isInit = 1;
 var entropy = 0;
-remoteURL = 'http://192.168.0.102:5000'
+remoteURL = 'http://192.168.0.103:5000'
 
 var isDraw = 1; 
 
